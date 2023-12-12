@@ -1,0 +1,87 @@
+1. Create Table institute with following details :
+	institute id, institute name,institute city, institute regno and institute phone.
+	 
+create keyspace knowit with
+replication =('class':'SimpleStrategy','replication_factor:1');
+
+create table institute()
+(
+institute_id  int primary key,
+name text,
+ins_city text,
+ins_regno varint,
+ins_phone varint
+);
+
+2. Insert 2 records in Institute Table and display them.
+	insert into institute(id,name,ins_city,ins_regno,ins_phone)
+	values(1,'seeta','pune',1234,12354576);
+	insert into institute(id,name,ins_city,ins_regno,ins_phone)
+	values(2,'geeta','mumbai',4321,6543214);
+
+	select * from institute;
+
+ 3. Add institute email column in institute Table.	
+	alter table institute
+	add  email text;
+ 
+ 4. Delete institute email column from institute Table.
+	alter table institute
+	drop email;
+ 
+ 5. Delete institute regno and phone columns from institute Table.	
+	alter table institute
+	drop  (ins_regno,reg_phone);
+ 6. Delete institute table.
+	drop table institute;
+ 
+ CQL Assignments
+1. Create product table with following details (product id, name, desc,price,qty).
+	create table product
+	(
+	pid int primary key;
+	name text,
+	descp text,
+	price varint,
+	qty varint
+	);
+
+2. Insert 3 records in product table.
+	insert into product(pid,name,descp,price,qty)
+	values(101,'TV','Sony',25000,'1');
+	insert into product(pid,name,descp,price,qty)
+	values(102,'Washing Machine','Bajaj',20000,2);
+	iinsert into product(pid,name,descp,price,qty)
+	values(103,'Smartphone','one plus',40000,3);
+
+3. display procuct id and name from product table.
+	select pid,name from product;
+
+4. Diaplay all details of product having id 2.
+	select * from product
+	where pid='102';
+
+5. Delete an entire row of product id 3
+	delete from product
+	where pid=103;
+	  
+6. Delete the product_price where product_id is 1.
+	delete price from product
+	where pid=101;
+	
+7. Modify product id 2 to set  price to 10,000 and product name to washing machine. 
+	update product
+	set price=10000 and  name= 'TV'
+	where pid=102;
+	
+8.Create index on product name column.
+	
+
+9. Drop Index created on product name column.
+
+10. perform the BATCH (Insert, Update and Delete) operations on product table:
+   Insert a new row with the following details (4, 4000, 'CD Player').
+   Update the product_price of product with row id 3 to 8000.
+   Delete product_price of the procuct with row id 2.
+
+   

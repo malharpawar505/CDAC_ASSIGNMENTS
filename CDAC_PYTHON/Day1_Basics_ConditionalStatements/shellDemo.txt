@@ -1,0 +1,51 @@
+C:\Users\sneha>python --version
+Python 3.12.0
+
+C:\Users\sneha>python
+Python 3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> a=5
+>>> a
+5
+>>> a+10*34
+345
+>>> a is 10
+<stdin>:1: SyntaxWarning: "is" with 'int' literal. Did you mean "=="?
+False
+>>> y=10
+>>> a is y
+False
+>>> 3+5
+8
+>>> y= 7
+>>> y>5 and y<10
+True
+>>> 5<y<10
+True
+>>> 5/2
+2.5
+>>> 5//2
+2
+>>> 5%2
+1
+>>> a="Welcome"
+>>> a\
+...
+'Welcome'
+>>> a
+'Welcome'
+>>> type(a)
+<class 'str'>
+>>> type(y)
+<class 'int'>
+>>> a,b = 10,20
+>>> a
+10
+>>> b
+20
+>>> a,b = b,a
+>>> a
+20
+>>> b
+10
+>>> ^Z

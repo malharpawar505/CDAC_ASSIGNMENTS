@@ -1,0 +1,204 @@
+null value functions in Oracle
+=====================
+1. nvl(arg1,arg2)
+   select ename,comm,nvl(comm,100)
+   from emp;
+
+2. nvl2(arg1,arg2,arg3)
+select ename, comm,nvl2(comm,200,100)
+from emp;
+//Explanation
+if arg1 is null
+will fetch arg3
+else arg2
+
+3.nullif(arg1,arg2)
+returns null if both arguents are same
+select ename,comm,nullif(comm,0)
+from emp;
+
+select ename,deptno,nullif(deptno,20)
+from emp;
+
+4.coalesce(arg1,arg2,....)
+
+create table persons
+(pid number,
+ pname varchar2(10),
+ phno varchar2(12),
+ mobile varchar2(12)
+);
+
+insert into person
+values (1,'Suresh',null,'99999999');
+insert into person
+values (2,'Ramesh','6650345','99999999');
+insert into person
+values (3,'Rajesh',null,null);
+insert into person
+values (4,'Rakesh','54326',null);
+select pname,coalesce(phno,mobile)
+from person;
+
+SQL> select pname,coalesce(phno,mobile)
+  2  from person;
+
+PNAME      COALESCE(PHN
+---------- ------------
+Suresh     99999999
+Ramesh     6650345
+Rajesh
+Rakesh     54326
+
+
+
+joins on 3 tables
+=============
+create table cat_details
+(
+  cat_id number,
+  details varchar2(30),
+  constraint pk_id2 primary key(cat_id)
+);
+insert into cat_details
+values(10,'aaaaaaaaa');
+insert into cat_details
+values(20,'bbbbbbbbb');
+insert into cat_details
+values(30,'ccccccc');
+insert into cat_details
+values(40,'dddddd');
+
+
+create table cat
+(
+  id number,
+  cid number,
+  cname varchar2(20),
+  constraint pk_id1 primary key(id),
+  constraint  fk_id1 foreign key(cid) references cat_details(cat_id)
+)
+
+insert into cat 
+values(1111,10,'Essentials');
+insert into cat 
+values(2222,20,'Food');
+insert into cat 
+values(3333,30,'Medicine');
+insert into cat 
+values(4444,40,'Electronics');
+
+create table product1
+(
+ pid number,
+pname varchar2(20),
+cid number,
+constraint pk_id primary key(pid),
+constraint  fk_id foreign key(cid) references cat(id)
+);
+insert into product1
+values(1,'Soap',1111);
+insert into product1
+values(2,'Sugar',2222 );
+insert into product1
+values(3,'Savlon',3333);
+insert into product1
+values(4,'Mobile',4444);
+
+select p.pid,p.pname,p.cid,c.cname,cd.details
+from product1 p
+join cat c
+on p.cid=c.id
+join cat_details cd
+on c.cid=cd.cid;
+
+SQL> select * from product1;
+
+       PID PNAME                       CID
+---------- -------------------- ----------
+         1 Soap                       1111
+         2 Sugar                      2222
+         3 Savlon                     3333
+         4 Mobile                     4444
+
+SQL> select * from cat;
+
+        ID        CID CNAME
+---------- ---------- --------------------
+      1111         10 Essentials
+      2222         20 Food
+      3333         30 Medicine
+      4444         40 Electronics
+
+SQL> select * from cat_details;
+
+       CID DETAILS
+---------- ------------------------------
+        10 aaaaaaaaa
+        20 bbbbbbbbb
+        30 ccccccc
+        40 dddddd
+
+SQL> select p.pid,p.pname,p.cid,c.cname,cd.details
+  2  from product1 p
+  3  join cat c
+  4  on p.cid=c.id
+  5  join cat_details cd
+  6  on c.cid=cd.cid;
+
+       PID PNAME                       CID CNAME                DETAILS
+---------- -------------------- ---------- -------------------- ------------------
+         1 Soap                       1111 Essentials           aaaaaaaaa
+         2 Sugar                      2222 Food                 bbbbbbbbb
+         3 Savlon                     3333 Medicine             ccccccc
+         4 Mobile                     4444 Electronics          dddddd
+
+=========================================
+select p.pname, p.pid, p.cid, c.cname, cd.details
+from product1 p
+inner join cat c
+on p.cid=c.id
+inner join cat_details cd
+on c.cid=cd.cat_id; 
+
+
+
+
+
+
+
+
+
+Sequence
+
+create sequence prod_seq
+start with 10
+increment  by 5
+maxvalue  30
+nocache
+cycle;
+ 
+insert into product
+values(prod_seq.NEXTVAL,'Pencil',1111)
+insert into product
+values(prod_seq.NEXTVAL,'Pen',1111);
+insert into product
+values(prod_seq.NEXTVAL,'HBPencil',1111);
+insert into product1
+values(prod_seq.NEXTVAL,'SketchPen',1111);
+insert into product1
+values(prod_seq.NEXTVAL,'Glitter Penl',1111);
+insert into product1
+values(prod_seq.NEXTVAL,'Eraser',1111);
+
+delete 
+from product1
+where pid=10;
+
+//1
+elect p.pid,p.pname,c.cid,c.cname,ca.details
+  2  from product1 p
+  3  join cat c
+  4  on c.id=p.cid
+  5  inner join cat_details cd
+  6  on c.cid=cd.cat_id;

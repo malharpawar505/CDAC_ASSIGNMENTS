@@ -1,0 +1,43 @@
+1. Find all employees with name ending with R  
+2. Find all employees with name starting with M and ending with R
+3. Find all employees with name having L at 3 rd position
+4. Find all employees with name starting with M has L at 3 rd position and ends with R
+5. Find all employees with name having L at 3 rd position and E at second last position
+6. To find all employees with name starting with either M or A
+7. To find all employees with name starting with either M or A and last character as either R or E
+8. To find all employee with name starting with a or m and ending with e
+9. Find all employees with name starting with A and ending with e, or it may starts with s and end with h
+10. Find all employees with name not starting with A or M
+11. Display all employees with sal >1000 and sal<3000 and job has A at starting position and ends with T.
+12. Write a query display empno, ename, sal , increased sal by 10% and commission for all employees whose name starts with a,m or s
+13. Display all employees whose name starts with A and ends with either n or s, or works in dept 10
+14. list all departments whose name has atleast 5 characters.
+    Select * From dept
+    Where dname REGEXP_like(ename,^[A-Za-z]{5});
+15. Find all employees whose sal is divisible by 3 
+16. write query to display name followed by 4 stars followed by sal 
+    e.g SMITH****800
+17. display email as ename followed by mycompany.com
+    e.g SMITH@mycompany.com
+18. Display email as 1st 3 chacarters of ename, followed by dot, followed by 2 and 3rd character of     jobs,followed by @MyCompany
+19. Display string “Hello” followed by name having first letter of name in capital, followed by ! for all employees who earned commission
+20. display all names length of each name should be 10 characters , add required spaces on left side of name, also display jobs, length of jobs should be 9 characters add required on the right side of job.
+21. Write a query to display name is a job.
+    e.g SMITH is a clerk
+    job should be in small letters
+22. Display all columns by sperating with comma.
+23. Find sum of all the salaries in emp table.
+24. Find how many analysts are there in each department
+25. To find max, min and sum of salary for all employees whose sal > 1500 and < 3000
+26. Display ename,sal for dept 10 with max sal at the top.
+27. Write a query which will display name, department no and date of joining of all employees joined between  January 1, 1981 and March 31, 1983. Sort it based on date of joining (ascending).
+28.List the details of the employee , whose names start with ‘A’ and end with ‘S’ or whose names    contains N as the second or third character,and end with either ‘N’ or ‘S’.
+29.Display all employee names from emp table in the following format
+   Hello Allen . 
+30. Find sum and avg of sal and netsal  
+   net sal=sal+comm 
+
+ 
+
+ 
+ 

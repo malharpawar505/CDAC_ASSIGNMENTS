@@ -1,0 +1,102 @@
+create table vechile
+(
+vid number,
+vname varchar2(15),
+price number,
+discount number,
+milegae number,
+details varchar2(100)
+);
+
+insert into vechile
+values(2,'santro',95000,20,20,'Product of Hyandai.');
+
+insert into vechile
+values(3,'yahama',160000,5,70,'Sturdy and good milage');
+insert into vechile
+values(4,'i-10',300000,8,18,'Good small car');
+insert into vechile
+values(5,'WaganR',250000 ,10,25,'Good milage car');
+insert into vechile
+values(6,'Hero Splendor',75000 ,9,65,' Best bike');
+insert into vechile
+values(7,'Royal Enfild',190000 ,5,40,' a royal bike');
+
+
+create table customer
+(
+custid number,
+cname varchar2(15),
+location varchar(50)
+);
+
+insert into customer
+values(1,'nilima','pimpri');
+insert into customer
+values(2,'ganesh','pune');
+insert into customer
+values(3,'kishor','kothrud');
+insert into customer
+values(4,'priya','aundh');
+
+create table salesman1
+(
+sid number,
+sname varchar2(15),
+city varchar2(15),
+experience number
+);
+
+
+insert into salesman1
+values(10,'rajesh','mumbai',5);
+insert into salesman1
+values(11,'seema','pune',8);
+insert into salesman1
+values(12,'shailesh','nagpur',7);
+insert into salesman1
+values(13,'rakhi','pune',2);
+
+select vid "vechile Number", vname "vechile Name",price,discount,details from vechile;
+
+select * from salesman1 where city='pune';
+
+delete from customer where location='pimpri';
+
+select yahama,Hero Splendor,Royal Enfild from vechile;
+
+update vechile
+set price=80000
+where price=75000;
+
+select * from vechile where total price= price-discount;
+
+select * from salesman where experience>5;
+
+select * from vechile where vname= yahama;
+
+
+drop table salesman1;
+
+alter table vechile add totalprice number;
+
+
+create table employee1
+(
+eno number,
+ename varchar2(15),
+basic number,
+incentives number
+);
+
+
+
+
+
+
+
+
+
+
+
+

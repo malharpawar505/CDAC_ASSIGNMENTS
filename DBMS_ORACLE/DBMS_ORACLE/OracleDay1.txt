@@ -1,0 +1,28 @@
+create table student
+(
+roll number,
+name varchar2(15),
+dob date,
+per number(5,2)
+);
+
+insert into student
+values(1,'Raj','25-Oct-2018',83.23);
+insert into student
+values(2,'Rajesh','15-Oct-2018',73.23);
+insert into student
+values(3,'Rajendra','10-Oct-2018',93.23);
+insert into student
+values(4,'Raju','5-Oct-2018',83.23);
+
+select roll "Roll Number",name "Student name"
+from student;
+
+update student 
+set per=100.00;
+
+select * from student
+where name='Rajesh';
+
+select ename,sal,comm,sal+comm "Total Sal"
+from emp;

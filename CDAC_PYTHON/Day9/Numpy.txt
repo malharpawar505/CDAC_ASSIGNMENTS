@@ -1,0 +1,27 @@
+Create one 1-D , 2-D and 3-D array and check following attributes for all the arrays
+ndim
+shape
+dtype
+size
+
+Create 3*5 array using following types
+    empty and a full NumPy array
+    filled with all zeros
+    filled with all ones
+
+Write a NumPy program to create an array with values ranging from 14 to 40.
+
+Write a progem to generate array to store 40 values in 8*5 matrix.
+
+Write a progem to change the dimention of above matrix to 4*10
+
+
+
+Write a program to Convert a 1D array (Create array of 16 elements) to a 2D array with 2 rows
+
+
+Write a program to create  2-D array of 5 rows and 3 columns and do following operations
+ Add 4 in each elements
+ multiply by 2 to each elements
+Subtract 3 from each elements
+Divide each element by 2

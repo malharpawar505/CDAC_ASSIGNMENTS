@@ -1,0 +1,52 @@
+1. Count number of clerks in dept 10 and 20.
+
+select count(*) "Num of Clrk"
+from emp
+where deptno in (10,30)
+group by job
+having job='CLERK';
+
+2. Display sum of salary according to job for all employees excluding dept 30.
+ Display only if the sum salary is > 5000.
+
+select job,sum(sal)
+from emp
+group by job
+having sum(sal)>5000;
+
+3. Display job wise max sal only for managers, clerks, salesman working in dept 10 and 20.
+ Sort the data by des order of the max salary.
+
+select job,max(sal)
+from emp
+where deptno=10 or deptno=20
+group by job
+order by max(sal) desc;
+
+
+4. Display job wise number of employees in all the department with total salary > 3000
+
+select job,count(*) "num of emp",sum(nvl((sal+comm),sal)) "tot_sal"
+from emp
+group by job
+having sum(nvl((sal+comm),sal))>3000;
+
+
+5. Display the department number having atleast 4 employees in it.
+6. Display the department having saleman in it.
+7. Display all allocated jobs from emp table. 
+8. Display name starting with upper case letter and job starting with upper case letter for all employees.
+    e.g Smith Clerk
+9. Display ename and it's length for all employees.
+    e.g SMITH 5
+10.Display first 3 characters of ename in lower case and rest everything in upper case. 
+    e.g smiTH
+11.Display last 3 letters of name.
+12.Generate an email-id for all employees and display. Email id is generated as follows
+    first 3 letters of name in lower case + last 2 letters of job in lower case + @knowit.com
+    eg name=SMITH   job=CLERK  
+    email-id = smirk@knowit.com
+13. Increase the salary by 10% in the database for all employees having experience more than 40 years  
+14. Implement following using case statement. Use data from emp database.
+    If comm is null ‘need improvement’ If <500 “ok” If >=500 and < 1000 ‘good' ‘Excellent'
+15. From the emp table, write a SQL query to find those employees whose salary is in the range of 1000, and 3000(Begin and end values included.). 

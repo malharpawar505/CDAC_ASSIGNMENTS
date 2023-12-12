@@ -1,0 +1,89 @@
+Create  following Tables.
+
+1. Vehicle 
+   Vid    Vname        	         Price    discount  milage     details
+   -----------------------------------------------------------------------------------------------
+    1     Activa       		 80000    10        35        Two wheeler.Sturdy.Milage 30 km
+    2     Santro        	 95000    20        20        Product of Hyandai.
+    3     Yamaha                 160000   5         70        Sturdy and good milage
+    4     i-10                   300000   8         18        Good small car
+    5     WaganR                 250000   10        25        Good milage car
+    6     Hero Splendor          75000    9         65        Best bike
+    7     Royal Enfild           190000   5         40        a royal bike
+
+Note : discount is given in percentage.
+ 
+2. Customer
+   Custid Cname     Location
+   -------------------------
+     1    Nilima    Pimpri
+     2    Ganesh    Pune
+     3.   Kishor    Kothrud
+     4.   Priya     Aundh
+ 
+
+3. Salesman
+   Sid    Sname        city      experience
+   -----------------------------------------
+   10     Rajesh       mumbai       5
+   11     Seema        Pune         8
+   12     Shailesh     Nagpur       7
+   13     Rakhi        Pune         2
+ 	
+1. Display vid, vname, price and details from table vehicle with column heading as Vehicle id, vehicle name, price,discount and details.
+2. Display names of salesmen who work in Pune.
+3. Delete customer from Pimpri area.
+4. Display information of vehicle , Motor bike.
+5. If buying price of the vehicle is 75000 then change it to 80000.
+6. Create a copy of table customer and salesman by name customer1 and salesman1
+7. Delete all the records from Customer table.
+8. Delete entire table Salesman.
+9. Display vid, vname, price,details and total price for each vehicle.
+   total price = price - discount
+10.Display all vehicles whose price is less than 100000.
+11.Display all the information of salesmen having experience more than 5 years.
+
+12. For the given schema, create the table and solve following queries
+    employee(eno,ename,basic,incentives)
+    1 Rajesh 20000 1500
+    2 Sarita 25000 1000
+    3 Meera 15000 3000
+    4 Jitesh 30000 500
+    5 Ramesh 12000 3000
+    
+   1. List all employees having basic>15000
+   2. Change incentive of Jitesh to 1000.
+   3. Increase the salary of all employees earning less than 20000
+      basic by 5%.
+   4. New employee Ajay joins the firm. His eno is 20, basic is 16000 and he is
+      not eligible for incentivies. Store this information in table.
+   5. Meera leaves the company. Make necessat changes in table.    
+   6. Add column job in the above table. Job is designation of an employee and it is
+      varchar2(12).
+   7. Ramesh is promoted as Head Clerk. Assign him new job in the table.
+   8. Sarita and Jitesh are pramoted as Analyst. Make necessary changes in the table.
+   9. Change job to Manager for all employees other than 'Head Clerk' or 'Analyst'
+
+13. Create following table
+  
+   cust-vehicle  
+ tid  Custid  Vid   Sid    Buy_price
+ ------------------------------------
+  1     1      1     10     75000
+  2     1      2     10     790000
+  3     2      3     11     80000
+  4     3      3     11     75000
+  	
+Note : Apply following constraints
+       -tid is a transaction id and is a primary key for cust-vehicle table.
+       -all other entries in the table are not null.
+       -buy_price is greator than 0.
+
+1. Add new column by name rating with number data type in cust_vehicle table.
+2. Give rating 5 to all the vehicles with price greater than 90000.
+3. Make vid,custid and sid as primary keys in their respective table.
+4. Display tid,custid,customer name and buy_price.
+5. Dispaly tid,custid,customer name,vid,vehicle name, sid, salesmen name and buy_price for vehicle.
+
+
+ 

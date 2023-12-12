@@ -1,0 +1,192 @@
+substitution variable
+================
+select * 
+from emp
+where deptno=20;
+
+select * 
+from emp
+where deptno=&x;
+
+select * 
+from emp
+where job='&x';
+
+select * 
+from emp
+where job='&x' and deptno=&y;
+
+======================
+case statement
+
+
+select empno,ename,sal, case when sal< 1000 then 'M1'
+			when sal >1000 and sal<=2000 then 'M2'
+			when sal >2000 and sal<=3000 then 'M3'
+                                                      else 'President' 
+                                            end as   Grade  
+from emp; 
+
+SQL> select empno,ename,sal, case when sal< 1000 then 'M1'
+  2                     when sal >1000 and sal<=2000 then 'M2'
+  3                     when sal >2000 and sal<=3000 then 'M3'
+  4                                                        else 'President'
+  5                                              end as   Grade
+  6  from emp;
+
+     EMPNO ENAME               SAL GRADE
+---------- ------------ ---------- ---------
+      7839 KING               5000 President
+      7698 BLAKE              2850 M3
+      7782 CLARK              2450 M3
+      7566 JONES              2975 M3
+      7654 MARTIN             1250 M2
+      7499 ALLEN              1600 M2
+      7844 TURNER             1500 M2
+      7900 JAMES               950 M1
+      7521 WARD               1250 M2
+      7902 FORD               3000 M3
+      7369 SMITH               800 M1
+      7788 SCOTT              3000 M3
+      7876 ADAMS              1100 M2
+      7934 MILLER             1300 M2
+      7949 ALEX               1250 M2
+      7945 ALIBABA            1350 M2
+      7415 ABRAMA             3350 President
+
+17 rows selected.
+
+========================================
+Alias for column
+
+select emp.empno,emp.ename,emp.deptno,dept.dname
+from emp,dept
+where emp.deptno=dept.deptno;
+
+
+select e.empno, e.ename, e.deptno,d.dname
+from emp e, dept d
+where e.deptno=d.deptno;
+
+==============================
+more built in functions
+
+1.instr searches for the first occurance of character
+instr(ename,'A')
+
+select ename,instr(ename,'A')
+from emp;
+
+select ename,instr(ename,'A')
+from emp
+where instr(ename,'A')=2;
+
+2. replace(str,arg1,arg2)  replaceses arg1 with arg2
+select ename, replace(ename,'A','aaa')
+from emp;
+
+3. to_char(date,fromat)
+
+select ename,hiredate,to_char(hiredate,'MM/YY')
+from emp; 
+select ename,hiredate,to_char(hiredate,'dd/MM/YY')
+from emp; 
+
+select ename,hiredate,to_char(hiredate,'dd-MM-YY')
+from emp;
+
+select ename,hiredate,to_char(hiredate,'YYYY')
+from emp;
+
+select ename,sal,to_char(sal,'$9999.99') Salary
+from emp;
+
+============================
+sub query
+
+select *
+from emp
+where deptno=(select deptno
+from emp
+where ename='SMITH');
+
+Coorelated queries
+=================
+
+SQL>  select *
+  2  from dept d
+  3  where not exists (select e.deptno
+  4                                  from emp e
+  5                                  where d.deptno = e.deptno);
+
+    DEPTNO DNAME                LOCATIONID
+---------- -------------------- ----------
+        50 PURCHASE                         5
+        40 OPERATIONS                    4
+        60 PRODUCTION                    6
+
+
+
+    select *
+    from dept d
+    where  exists (select e.deptno
+                              from emp e
+                              where d.deptno = e.deptno);
+
+    DEPTNO DNAME                LOCATIONID
+---------- -------------------- ----------
+        10 ACCOUNTING                     1
+        30 SALES                                    3
+        20 RESEARCH                           2
+
+SQL> insert into emp(empno,ename,deptno)
+  2  values(9999,'Raj',70);
+
+1 row created.
+
+SQL> select * from emp;
+
+     EMPNO ENAME        JOB                         MGR     HIREDATE           SAL       COMM     DEPTNO
+---------- ------------ -------------------- ---------- --------- ---------- ---------- ---------- -
+      7839 KING         PRESIDENT                               17-NOV-81             5000                        10
+      7698 BLAKE        MANAGER                    7839   01-MAY-81            2850                         30
+      7782 CLARK        MANAGER                    7839   09-JUN-81             2450                         10
+      7566 JONES        MANAGER                    7839   02-APR-81             2975                           20
+      7654 MARTIN       SALESMAN                7698   28-SEP-81               1250       1400           30
+      7499 ALLEN        SALESMAN                   7698    20-FEB-81       1600        300         30
+      7844 TURNER       SALESMAN                   7698 08-SEP-81       1500          0         30
+      7900 JAMES        CLERK                      7698 03-DEC-81        950                    30
+      7521 WARD         SALESMAN                   7698 22-FEB-81       1250        500         30
+      7902 FORD         ANALYST                    7566 03-DEC-81       3000                    20
+      7369 SMITH        CLERK                      7902 17-DEC-80        800                    20
+      7788 SCOTT        ANALYST                    7566 09-DEC-82       3000                    20
+      7876 ADAMS        CLERK                      7788 12-JAN-83       1100                    20
+      7934 MILLER       CLERK                      7782 23-JAN-82       1300                    10
+      7949 ALEX         MANAGER                    7698 24-JAN-82       1250        500         30
+      7945 ALIBABA      SALESMAN                   7902 14-FEB-80       1350       2700         30
+      7415 ABRAMA       CLERK                      7902 31-DEC-81       3350                    10
+      9999 Raj                                                                                  70
+
+18 rows selected.
+
+SQL> select *
+  2  from emp
+  3  where not exists (select *
+  4                                  from dept
+  5                                  where emp.deptno=dept.deptno);
+
+     EMPNO ENAME        JOB                         MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ------------ -------------------- ---------- --------- ---------- ---------- ---------- -
+      9999 Raj                                                                                  70
+
+
+List all employees earning salary more than the avg sal of the dept they work in.
+select * 
+from emp e
+where sal > (select avg(sal)
+	     from emp d
+	     where d.deptno = e.deptno)
+
+
+
+                                                 

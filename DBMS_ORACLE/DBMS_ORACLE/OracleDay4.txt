@@ -1,0 +1,151 @@
+Group by having
+
+select sum(sal),max(sal),min(sal),avg(sal),count(*),count(comm)
+from emp;
+
+select sum(sal) 
+from emp
+where deptno = 20;
+
+select sum(sal) 
+from emp
+group by deptno;
+
+SQL> select count(distinct deptno)
+  2  from emp;
+
+COUNT(DISTINCTDEPTNO)
+---------------------
+                    3
+
+SQL> select count(distinct job)
+  2  from emp;
+
+COUNT(DISTINCTJOB)
+------------------
+                 5
+
+select deptno,sum(sal) 
+from emp
+group by deptno;
+
+select deptno,sum(sal) 
+from emp
+group by deptno
+order by deptno;
+
+select deptno,sum(sal) 
+from emp
+group by deptno
+order by sum(sal);
+
+SQL> select sum(sal)
+  2  from emp
+  3  group by deptno;
+
+  SUM(SAL)
+----------
+     12000
+     10875
+     12100
+
+SQL> select deptno,sum(sal)
+  2  from emp
+  3  group by deptno;
+
+    DEPTNO   SUM(SAL)
+---------- ----------
+        30      12000
+        20      10875
+        10      12100
+
+SQL> select deptno,sum(sal)
+  2  from emp
+  3  group by deptno
+  4  order by deptno;
+
+    DEPTNO   SUM(SAL)
+---------- ----------
+        10      12100
+        20      10875
+        30      12000
+
+
+
+select deptno,sum(sal) 
+from emp
+group by deptno
+having sum(sal)>11000
+order by sum(sal);
+
+select count(*)
+from emp
+where lower(job)='clerk';
+
+select deptno, count(*)
+from emp
+where lower(job)='clerk'
+group by deptno;
+
+
+select deptno, count(*)
+from emp
+where lower(job)='clerk'
+group by deptno
+having count(*)>1;
+
+SQL> select count(*)
+  2  from emp
+  3  where lower(job)='clerk';
+
+  COUNT(*)
+----------
+         5
+
+SQL> select count(*)
+  2  from emp
+  3  where lower(job)='clerk'
+  4  group by deptno;
+
+  COUNT(*)
+----------
+         1
+         2
+         2
+
+SQL> select deptno, count(*)
+  2  from emp
+  3  where lower(job)='clerk'
+  4  group by deptno;
+
+    DEPTNO   COUNT(*)
+---------- ----------
+        30          1
+        20          2
+        10          2
+
+SQL> select deptno, count(*)
+  2  from emp
+  3  where lower(job)='clerk'
+  4  group by deptno
+  5  having count(*)>1;
+
+    DEPTNO   COUNT(*)
+---------- ----------
+        20          2
+        10          2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

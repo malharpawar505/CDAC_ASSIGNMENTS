@@ -1,0 +1,110 @@
+pl/sql blocks in oracle
+
+pl/sql block to print hello DBDA
+
+declare
+    str1 varchar2(20);
+begin 
+   str1:='Hello DBDA';
+   dbms_output.put_line(str1);
+end;
+/
+
+Accept 2 numbers and add them
+declare
+   x number:=&x;
+   y number:=&y;
+   z number;
+begin
+  z:=x+y;
+  dbms_output.put_line(z);
+end;
+/
+
+===========================
+
+procedure
+
+count no of employees working in dept 20
+
+create or replace procedure row_cnt(n out number)
+as
+begin
+   select count(*) into n
+   from emp
+   where deptno =20;
+end;
+/
+
+passing value to procedure
+create or replace procedure row_cnt(n out number,x in number)
+as
+begin
+   select count(*) into n
+   from emp
+   where deptno =x;
+end;
+/
+
+===================================
+
+function
+
+function to generate email for employee
+
+create or replace function mail( pname varchar2, pjob varchar2) return varchar2
+as
+   x varchar2(30);
+   begin
+      x:= concat(concat(substr(pname,1,2),substr(pjob,1,3)),'@know-it');
+      return (x);
+   end;
+/
+      
+
+
+select ename,job,mail(ename,job) email
+from emp;
+
+=================================-
+Exception handling
+
+create or replace procedure test(mno in number )
+as
+ msal number;
+ begin
+    select sal into msal
+    from emp
+    where empno=mno;
+    dbms_output.put_line(msal);
+ exception
+     when no_data_found then
+     dbms_output.put_line('Employee No not found');
+end;
+/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+create or replace

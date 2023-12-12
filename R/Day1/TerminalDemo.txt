@@ -1,0 +1,107 @@
+C:\Users\sneha>R
+
+R version 4.2.2 (2022-10-31 ucrt) -- "Innocent and Trusting"
+Copyright (C) 2022 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[Previously saved workspace restored]
+
+> R.version
+               _
+platform       x86_64-w64-mingw32
+arch           x86_64
+os             mingw32
+crt            ucrt
+system         x86_64, mingw32
+status
+major          4
+minor          2.2
+year           2022
+month          10
+day            31
+svn rev        83211
+language       R
+version.string R version 4.2.2 (2022-10-31 ucrt)
+nickname       Innocent and Trusting
+> a=3
+> a
+[1] 3
+> a<-10
+> class(a)
+[1] "numeric"
+> typeof(a)
+[1] "double"
+> a<-10L
+> a
+[1] 10
+> class(a)
+[1] "integer"
+> typeof(a)
+[1] "integer"
+> s<="Hello World"
+[1] TRUE
+> s<-"Hello World"
+> s
+[1] "Hello World"
+> class(s)
+[1] "character"
+> typeof(s)
+[1] "character"
+> a= 10
+> b=5
+> a+b
+[1] 15
+> a-b
+[1] 5
+> a/b
+[1] 2
+> a<-10
+> b<-3
+> a/b
+[1] 3.333333
+> a%%b
+[1] 1
+> a%/%b
+[1] 3
+> a^b
+[1] 1000
+> no<-readline("Enter no")
+Enter no12
+> no
+[1] "12"
+> class(no)
+[1] "character"
+> no<-as.integer(no)
+> no
+[1] 12
+> class(no)
+[1] "integer"
+> no <- scan(what=integer())
+1: 1 2 3 4 5 6 7 8 9 10
+11:
+Read 10 items
+> no
+ [1]  1  2  3  4  5  6  7  8  9 10
+> class(no)
+[1] "integer"
+> typeof(no)
+[1] "integer"
+> q()
+Save workspace image? [y/n/c]: y
+
+C:\Users\sneha>rscript "C:\Snehal\CDAC\Sept 23\DBDA\R\Day1\first.r"
+[1] "hello World"

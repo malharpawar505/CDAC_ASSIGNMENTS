@@ -1,0 +1,84 @@
+1. Write a query to display sum of salaries and deptno for all the departments.
+
+Ans: select deptno,sum(sal) from emp1 group by deptno;
+
+=========================================================================================================================================================
+2. Write a query to display maximum salary, minimum salary and average sal along with deptno for all departments.
+
+Ans: select deptno,max(sal),min(sal),avg(sal) from emp group by deptno order by deptno;
+
+============================================================================================================================================================
+3. Find sum of salary for all employees whose sal > 1500. Sum of salary should be displayed according to the department.
+
+Ans:  select deptno,sum(sal) from emp group by deptno having sum(sal)>1500;
+
+==========================================================================================================================================================
+4. Find number of clerks working in each department.
+
+Ans: select deptno,count(job) from emp1 where job='clerk' group by deptno;
+
+========================================================================================================================================================================
+5. Find how many employees are working under same manager display mgr and the count .
+
+Ans: select mgr,count(job) from emp1 where job='manager' group by mgr ;
+
+==============================================================================================================================================================================
+
+6. Display all departments whose avg sal > 2000.
+
+ans:  select deptno,avg(sal) from emp1 group by deptno having avg(sal)>2000 order by deptno;
+
+=================================================================================================================================================================================
+7. Display count of employees working under each department.
+
+Ans: select deptno,count(ename) from emp1 group by deptno order by deptno;
+
+==================================================================================================================================================================================
+8. Display all mgr under whom more than 2 analyst or salesmen are working
+
+ans: 
+===================================================================================================================================================================================
+9. Calculate how many employees earn sal greater than 1500 in each dept.
+
+Ans: select deptno,sum(sal),count(ename) from emp1 group by deptno having sum(sal)>1500;
+
+===============================================================================================================================================================================
+10.Display count of employees getting commission.
+
+Ans: select deptno,count(comm) from emp1 group by deptno having count(comm) is not null;
+
+=================================================================================================================================================================================
+
+11.Display the difference between max salary and minimum salary for depatno 20
+
+ans: select deptno,max(sal)-min(sal) from emp1 where deptno=20 group by deptno;
+
+=================================================================================================================================================================================
+12. List the employees in dept 20 and 30 who did not get any commission.
+
+Ans: select ename,comm from emp1 where deptno=20 or deptno=30 group by ename,comm having comm is null; 
+
+==========================================================================================
+12.Display hiredate and number of employees hired each year from emp table.
+
+Ans 
+
+============================================================================================
+13.Display deptno and total salary spent on that department if the total sal is > 20000.
+
+Ans: select deptno,
+
+===========================================================================================
+14.Display count of employees who are not earning any commission.
+
+Ans: select deptno,comm,count(ename) from emp1 group by deptno,comm having comm is null order by deptno;
+
+=====================================================================================================
+ 
+15.Calculate annual salary for all employees.
+   annual sal=(comm+sal)*12
+
+ans: select deptno,sum((comm+sal)*12)"annual sal" from emp1 group by deptno order by deptno;
+
+ select deptno,sum(nvl((comm+sal),1)*12)"annual sal" from emp1 group by deptno order by deptno;
+

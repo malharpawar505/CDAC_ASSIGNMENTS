@@ -1,0 +1,3 @@
+1. Generate random numbers and plot different plots. 
+2.Import any dataset and plot different statistical plots and study different use cases of each plot.
+3. Plot the same graphs using Matplotlib, Plotly and Seaborn and study the difference between the methods of plotting.

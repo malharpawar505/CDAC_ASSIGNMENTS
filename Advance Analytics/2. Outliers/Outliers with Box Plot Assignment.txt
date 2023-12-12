@@ -1,0 +1,16 @@
+1. 
+i. Write a Python function that takes a list of numeric values as input and returns the interquartile range (IQR).
+ii. Using Matplotlib or Seaborn, create a boxplot for a given dataset stored in a list or NumPy array.
+iii.  Extend the boxplot created in question 1 to include labels for the median, quartiles, and potential outliers.
+
+2. Create a script that reads a dataset from a CSV file, creates a boxplot using Matplotlib, and saves the plot as an image file.
+
+3. Choose a dataset with multiple variables and create individual boxplots for each variable.
+
+4. Explore the Seaborn library and create a boxplot with additional features, such as grouping the data by a categorical variable.
+
+5. Write a Python script that generates a synthetic dataset with outliers, creates a boxplot, and then removes the outliers. Compare the before-and-after boxplots.
+
+6.  Given a dataset, implement a function to automatically determine the appropriate whisker length multiplier for outlier detection based on the characteristics of the dataset.
+
+7. Create a script that reads a dataset from a CSV file, creates a boxplot using Matplotlib, and saves the plot as an image file.

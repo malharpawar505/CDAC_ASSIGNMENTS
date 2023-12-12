@@ -1,0 +1,10 @@
+1. create trigger to find total sal for employee.
+    empTmp(eno,ename,sal,comm,totsal);
+
+2. Consider following tables
+    product(pid,pname,price)
+    product_details(pid,qty,amt)
+    amt = product.price * qty
+    Write a trigger which will calculate amt every time any update is done 
+    in the price of an item. 
+    

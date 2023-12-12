@@ -1,0 +1,164 @@
+1. create table Product(
+   pid number primary key,
+   pname varchar2(20),
+   price number(6,2) default 20.00,
+   qty number check(qty>0),
+   cid number ,
+   sid number,
+   constraint fk_cid foreign key(cid) references category(cid) on delete set null,
+   constraint fk_sid foreign key(sid) references salesman(sid)  
+   );
+
+pid pname       qty    price   catid     sid
+----------------------------------------
+123 lays   	          30     30.00    1      12
+111 pepsi            40     50.00    4      11
+134 nachos         50     50.00    1      12
+124 dairymilk    40     60.00    2      14
+124 pringles       40     60.00    1      14
+
+    INSERT into   product values(123,'lays',30,30.00,1,12);
+    INSERT into   product values(111,'pepsi',40,50.00,4,11);
+    INSERT into   product values(134,'nachos',50,50.00,1,12);
+    INSERT into   product values(124,'dairy milk',40,60.00,2,14);
+    INSERT into   product values(125,'pringles',40,60.00,1,14);
+
+create table salesman(
+   sid number primary key,
+   sname varchar2(15) unique not null,
+   city varchar2(15)
+);
+
+INSERT into   salesman values(11,'Rahul','Pune');
+INSERT into   salesman values(12,'Kirti','Mumbai');
+INSERT into   salesman values(13,'Prasad','Nashik');
+INSERT into   salesman values(14,'Arnav','Amravati');
+
+sid sname        city
+---------------------
+11  Rahul       Pune
+12  Kirti         Mumbai
+13  Prasad     Nashik
+14  Arnav       Amaravati
+  
+cid cname               description
+----------------------------
+1   chips                  very crunchy
+2   chocolate           very chocolaty
+3   snacks                yummy
+4   cold drinks        thanda thanda cool cool
+
+   create table category(
+   cid number primary key,
+   cname varchar2(15) unique not null,
+   description varchar2(30));
+
+
+   INSERT into  category values(1,'chips','crunchy');
+   INSERT into   category values(2,'chocolate','very chocolaty');
+   INSERT into   category values(3,'snacks','yummy');
+   INSERT into   category values(4,'cold drinks','thanda thanda cool cool');
+
+==========================================================================================================
+
+1. List all products with category chips
+
+ANS: select pname from product where cid=(select cid from category where cname='chips');
+
+===================================================================================================================
+ 
+2. display all products sold by kirti
+
+ANS: select pname from product where sid=(select sid from salesman where sname='Kirti');
+
+==================================================================================================================
+
+3. display all salesman who did not sell any product
+
+ANS: select s.sname from salesman s where not exists (select sid from product p where p.sid=s.sid);
+
+=====================================================================================================================
+
+4. display all category for which no product is assigned
+
+ANS: select c.cname from category c where not exists (select cid from product p where p.cid=c.cid);
+
+=======================================================================================================================
+
+5. display all products with no category assigned
+
+ANS: select p.pname from product p where not exists (select cid from category c where c.cid=p.cid);
+
+=====================================================================================================================================
+
+6. list all salesman who stays in city with name starting  with P or N
+
+ANS: select * from salesman where regexp_like(city,'^[P,N]');
+
+====================================================================================================================================
+
+7. add new column in salesman table by name credit limit.
+
+ANS alter table salesman add "credit limit" number;
+
+======================================================================================================================================
+
+8. Calculate number of L in string 'HELLLLL'?
+
+   Ans: select instr('HELLLL','L','1','2');
+
+=====================================================================================================================================
+
+9. Display all the employees whose job has a string 'MAN'.
+
+Ans: select * from emp where instr(job,'MAN')>=1;
+
+========================================================================================================================================
+
+10. Using joins display pid,pname,qty,price,cid, cname, description for all products. Use appropriate tables.
+
+ANS: select p.pid,p.pname,p.price,p.qty,p.cid,c.cname,c.description from product p left join category c on c.cid=p.cid;
+
+=========================================================================================================================================
+
+11. Using joins display pid,pname,qty,price,sid, along with sname, and city for all products. Use appropriate tables.
+
+ANS: select p.pid,p.pname,p.qty,p.price,s.sid,s.sname from product p inner join salesman s on p.sid=s.sid;
+
+==============================================================================================================================================
+
+12. For every employee in emp table, display empno,ename,deptno,dname using join.
+
+ANS: select e.empno,e.ename,e.deptno,d.dname from emp1 e left join dept d on e.deptno=d.deptno;
+
+===========================================================================================================================================
+
+13. For every employee in emp table, display empno,ename,deptno, sal and grade from esalgrade table.
+
+ANS: select e.empno,e.ename,e.deptno,e.sal,s.grade from emp1 e inner join salgrade s on sal between s.losal and s.hisal;
+
+===============================================================================================================================================
+
+14. For every employee display empno,ename,mgr and name of a manager to home an employee is reporting.
+
+15. Add following information in emp table
+      empno:9999
+      ename:Pooja
+      deptno:90
+      Write a query using join to display all employees  along with  dept for whom deptno is assigned.
+
+ANS: insert into emp1(empno,ename,deptno) values(9999,'pooja',90);
+
+==================================================================================================================================================
+
+16.   Add following information in dept table
+      deptno:80
+      ename: Training
+      
+      Write a query using join to display all derpartments to whom employees are assigned and also the 
+     departments to whom employees are not assigned.
+
+ 
+ 
+
+ 

@@ -1,0 +1,39 @@
+Bernoulli Distribution:
+
+A biased coin has a probability of 0.7 of landing on heads. If the coin is flipped three times, what is the probability of getting exactly two heads?
+
+Binomial Distribution:
+
+In a factory, 95% of products pass quality control. If 10 products are randomly selected, what is the probability that exactly 8 of them pass quality control?
+
+Poisson Distribution:
+
+The number of emails received per hour follows a Poisson distribution with a mean of 5. What is the probability of receiving exactly 3 emails in the next hour?
+
+Normal Distribution:
+
+The heights of a population of students follow a normal distribution with a mean of 160 cm and a standard deviation of 10 cm. What percentage of students are taller than 170 cm?
+
+Exponential Distribution:
+
+The time between arrivals of buses at a station follows an exponential distribution with a mean of 15 minutes. What is the probability that the next bus will arrive within the next 10 minutes?
+
+Central Limit Theorem:
+
+A population has a mean of 50 and a standard deviation of 8. If random samples of size 25 are taken, what is the mean and standard deviation of the sampling distribution of the sample mean?
+
+Joint Probability:
+
+Two six-sided dice are rolled. What is the probability of getting a sum of 7 or 11?
+
+Conditional Probability:
+
+In a deck of cards, what is the probability of drawing a queen given that the card drawn is red?
+
+Multinomial Distribution:
+
+A six-sided die is rolled three times. What is the probability of getting exactly one 1, one 2, and one 3?
+
+Hypothesis Testing:
+
+A manufacturer claims that the average lifespan of its light bulbs is 1000 hours with a standard deviation of 50 hours. A random sample of 25 light bulbs has a mean lifespan of 980 hours. Test the manufacturer's claim at a 5% significance level.

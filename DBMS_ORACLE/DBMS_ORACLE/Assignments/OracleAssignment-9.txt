@@ -1,0 +1,65 @@
+
+create table cat_details
+(
+  cat_id number,
+  details varchar2(30),
+  constraint pk_id2 primary key(cat_id)
+);
+insert into cat_details
+values(10,'aaaaaaaaa');
+insert into cat_details
+values(20,'bbbbbbbbb');
+insert into cat_details
+values(30,'ccccccc');
+insert into cat_details
+values(40,'dddddd');
+
+
+create table cat
+(
+  id number,
+  cid number,
+  cname varchar2(20),
+  constraint pk_id1 primary key(id),
+  constraint  fk_id1 foreign key(cid) references cat_details(cat_id)
+)
+
+insert into cat 
+values(1111,10,'Essentials');
+insert into cat 
+values(2222,20,'Food');
+insert into cat 
+values(3333,30,'Medicine');
+insert into cat 
+values(4444,40,'Electronics');
+
+create table product
+(
+ pid number,
+pname varchar2(20),
+cid number,
+constraint pk_id primary key(pid),
+constraint  fk_id foreign key(cid) references cat(id)
+);
+insert into product
+values(1,'Soap',1111);
+insert into product
+values(2,'Sugar',2222 );
+insert into product
+values(3,'Savlon',3333);
+insert into product
+values(4,'Mobile',4444);
+
+1. Write a query to display pid,pname,cid, cname,details
+
+2. Try following functions on emp table
+
+nvl
+nvl2
+nullif
+coalesce
+decode
+
+3. create a sequence on product table and cat table.
+    Add few row and check the result.
+ 

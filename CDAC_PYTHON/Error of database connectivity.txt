@@ -1,0 +1,1 @@
+NotSupportedError: Authentication plugin 'caching_sha2_password' is not supported

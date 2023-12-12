@@ -1,0 +1,36 @@
+adding an elemnt in array
+
+db.movie.update({},{$push:{actor:'Babita'}},{multi:true})
+
+delete 
+db.movie.remove({name:'Dil dhadakane do'})
+
+adding multiple values in array
+db.movie.update({},{$push:{actor:{$each:['Jetha','Madhavi']}}},{multi:true})
+
+adding at some positon
+db.movie.update({name:'Kesari'},{$push:{actor:{$each:['Amitabh','Madhubala'],$position:2}}})
+
+pull 
+db.movie.update({name:'Kesari'},{$pull:{actor:'Madhubala'}})
+
+pop
+db.movie.update({name:'Kesari'},{$pop:{actor:1}})
+db.movie.update({name:'Kesari'},{$pop:{actor:-1}},{multi:true})
+
+Aggregate functions
+$group
+db.movie.aggregate([{$group:{_id:null,total:{$sum:'$price'}}}])
+
+name starting withh k and fibd sum and avg price
+db.movie.aggregate([{$match:{name:/^[Kk]/}},{$group:{_id:null,sumPrice:{$sum:'$price'},avgPrice:{$avg:'$price'}}}]) 
+
+find min rating max rating avg rating
+db.movie.aggregate([{$group:{_id:'$rating',minPrice:{$min:'$price'},maxPrice:{$max:'$price'}}}]).pretty()
+
+count no of documents
+db.movie.aggregate([{$group:{_id:null,x:{$sum:1}}}]) 
+db.movie.aggregate([{$match:{name:/^[Kk]/}},{$group:{_id:null,MovieCount:{$sum:1}}}]) 
+
+unwind
+db.movie.aggregate([{$unwind:'$actor'},{$project:{name:1,actor:1,price:1}}]).pretty()

@@ -1,0 +1,32 @@
+ --db.student.insert({roll:1,name:'Seema'})
+ db.student.insert({roll:2,name:'Suresh'})
+ db.student.insert({roll:3,name:'Ramesh',subject:['C','CPP']})
+ subject in this case is any array.
+ 
+ --db.student.find()
+ 
+ --db current database
+ 
+ --db.student.find({},{_id:0})
+ 
+ db.student.insert({roll:7,name:'Yash',subject:['CPp','CPP','JAVA','ML'],marks:45})
+ db.student.insert({roll:9,name:'Akshay',subject:['C','CPP','Big DATA'],marks:78})
+ db.student.insert({roll:10,name:'Abhi',subject:['C','CPP'],mobile:876543,marks:67})
+ 
+ ^ beginning 
+$ end
+\d digit
+[ ] set
+/ / pattern
+.* multiple chars
+
+starting with numbers
+db.movie.find({name:/^[0-9]/})
+
+end with digit
+db.movie.find({name:/[0-9]$/})
+
+db.movie.find({name:/^\d.*$/})
+db.movie.find({name:/^\d.*s$/})
+db.movie.insert({name:'4 Crazy'})
+db.movie.find({name:/^[a-zA-Z]/})

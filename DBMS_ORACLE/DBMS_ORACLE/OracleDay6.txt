@@ -1,0 +1,70 @@
+joins in Oracle
+-------------
+
+1. cross join
+     cartasion product or cross product is the output
+
+     select e.empno,e.ename,e.deptno,d.dname
+     from emp e
+     cross join dept d;
+ 
+
+2.Inner join
+ 
+equi join
+ 
+   select e.empno,e.ename,e.deptno,d.dname
+     from emp e
+     inner join dept d
+     on e.deptno =d.deptno
+     order by e.deptno;
+
+insert into emp(empno,ename,deptno)
+values(4444,'Reshma',90);
+
+non equi join
+
+  select e.empno,e.ename,e.deptno,e.sal,s.grade
+  from emp e
+  inner join salgrade s
+  on e.sal between s.losal and s.hisal;
+
+self join
+
+select e.empno,e.ename,e.mgr,m.empno,m.ename
+from emp e
+inner join emp m
+on e.mgr=m.empno;
+
+3. outer join
+
+left outer
+
+select e.empno,e.ename,e.deptno, d.deptno,d.dname
+from  emp e
+left join dept d
+on e.deptno =d.deptno;
+
+same as 
+select * from emp
+
+
+right join
+select e.empno,e.ename,e.deptno, d.deptno,d.dname
+from  emp e
+right join dept d
+on e.deptno =d.deptno;
+
+same as 
+select * from dept
+
+3.full join
+
+select e.empno,e.ename,e.deptno, d.deptno,d.dname
+from  emp e
+full join dept d
+on e.deptno =d.deptno;
+
+
+
+ 

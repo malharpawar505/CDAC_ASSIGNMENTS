@@ -1,0 +1,28 @@
+1. Display employee name who is earning maximunm salary.
+2. Find all employees who work in the department where martin works.
+3. Find all employees who work in the department where Smith works or Allen works
+4. Display all who earn more than Allen or Smith.
+5. Delete all employees who work in Smith's dept and earn more than 1200 as a sal.
+6. Change the sal of Smith to same as Jones.
+7. From the emp table, write a SQL query to find out which employees have the same job as the employee whose empno is 7499. Return ename,job,deptno.
+8. From the emp table, write a SQL query to find those employees who receive a higher salary than the employee with eno 7499. Return ename,job,deptno,sal.
+9. From the emp table, write a SQL query to find those employees whose salary matches the lowest salary of any dept.
+10.Display the count and year in which  maximum number of employees are hired .
+11.From the emp table, write a SQL query to find those employees who earn more than the average salary of employees. Return employee ID,  name,sal.   
+12.From the emp table, write a SQL query to find those employees who report to that manager whose name
+   starts with   F . Return employee ID,  name,sal.     
+*13.  Find employees who earn salary more than the avg sal of their dept.
+14. From the emp table , write a SQL query to find those employees whose salary falls within the range of the smallest salary and 2500. Return all the fields. 
+
+16. Display all employees earning salary more than at least one managers.
+17. Dispaly all employees earning salary more than all the analysts.
+18. Display all employees who are not managers. 
+19. Organization has decised to increment the salaries of all employee. Following is the information
+      clerk    15% rise
+      analyst  12%
+      manager  5%
+      others 8%
+      Display empno,ename,sal, incremented sal.
+ 
+   
+

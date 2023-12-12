@@ -1,0 +1,74 @@
+select * from emp
+where comm is null;
+
+select ename,sal,comm,comm+sal "Total Sal"
+from emp;
+
+nvl()
+select ename,sal,comm,nvl(comm,100)+sal "Total Sal"
+from emp;
+
+constraints
+===========
+drop table person
+
+select * from person
+
+create table dept11
+(
+deptno number,
+dname varchar2(16),
+constraint pk_dno primary key(deptno)
+);
+insert into dept11
+values(10,'HR');
+insert into dept11
+values(30,'MKT');
+insert into dept11
+values(40,'PURCHASE');
+insert into dept11
+values(50,'ACC');
+insert into dept11
+values(60,'SALES');
+insert into dept11
+values(20,'RandD');
+
+
+create table person
+(
+no number,
+name varchar2(20) not null,
+city varchar2(10) default 'Pune',
+sal number check(sal>1000),
+dno number,
+constraint pk_no primary key(no),
+constraint fk_no foreign key(dno) references dept11(deptno) on delete cascade
+);
+
+insert into person 
+values(11,'Rajani','Mumbai',1500,10);
+insert into person 
+values(12,'Raj','Nasik',1700,20);
+insert into person 
+values(13,'Raju','Hydrabad',1700,20);
+insert into person 
+values(14,'Ram','Nagpur',1900,10);
+insert into person 
+values(15,'Rakrsh','Indor',2700,20);
+insert into person 
+values(16,'Ramesh','Ranchi',4700,20);
+
+select person.no,person.name,person.dno,dept11.dname
+from person,dept11
+where person.dno=dept11.deptno;
+
+delete 
+from person 
+where no=13;
+
+delete 
+from dept11
+where deptno=20;
+
+
+

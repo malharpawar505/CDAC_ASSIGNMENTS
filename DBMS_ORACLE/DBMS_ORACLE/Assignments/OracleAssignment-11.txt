@@ -1,0 +1,57 @@
+1. Write a procedure to display maximum salary.
+	create procedure max_sal(n out number)
+	as
+	begin
+	select max(sal) into n
+	from emp;
+	end;
+	/
+	
+2. Write a procedure to accept empno,ename, sal,job and insert this information in table.
+	create procedure accepe(empn number, enam varchar2, salary number, job1 varchar2)
+	as
+	begin
+	insert into emp(empno,ename,sal,job)
+	values(empn,enam,salary,job1);
+	end;
+	/
+
+3.Write a function to calculate total sal for all employees.
+    Total sal =comm+sal
+	create function calculate(sal1 number,comm1 number) return number
+	as
+	n number;
+	begin
+	n:=sal1+nvl(comm1,0);
+	return(n);
+	end;
+	/
+	
+4. Write a function to generate email
+	create or replace function email(pname varchar2,pjob varchar2) return varchar2
+	as
+	x varchar2(30);
+	begin
+	x:=concat(concat(substr(pname,1,2),substr(pjob,1,3)),'@knowit.com');
+	return (x);
+	end;
+	/
+
+5. Write a procedure which accepts 2 numbers and displays the sum out of procedure.
+6.  Write a function to display following string for emp rows
+      Smith is a Clerk
+7. Write a procedure to accept the job from user and count number of emplyees working in that role.
+8. Write a procedure which takes empno as an input and displays the salary accordingly. If employee dose no exist it should print proper msg.
+	create procedure find_sal(mempno in number)
+	as
+	msal number;
+	begin
+	select sal into msal
+	from emp
+	where empno=mempno;
+	dbms_output.put_line(msal);
+	exception
+	when no_data_found then
+	dbms_output.put_line('Entry does no exist');
+	end;
+	/

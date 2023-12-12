@@ -1,0 +1,78 @@
+1. Display all employees with sal more than his manager's sal.
+2. Find employees who earn salary more than the avg sal of their dept.
+3. Write a query which will display dept no and dept names to which no employee is assigned.
+4. Write a query which will display dept no and dept names to which no employee is assigned.
+
+create following tables and solve following questions
+1. faculty(fid(PK),fname,sp.skill1,sp.skill2)
+CREATE TABLE faculty(
+    fid number primary key,
+    fname varchar2(20) not null,
+    sp_skill1 varchar2(30),
+    sp_skill2 varchar2(30)
+ );
+
+faculty
+fid  fname  spskill1      spskill2
+------------------------------
+10  Amol   database    JAVA
+11  Asha    JAVA         MySQL
+12  Kiran   CPP            Database
+13  Seeta   MySQL     database
+   
+
+2. courses(cid(PK),cname,rid,fid(FK))
+
+   CREATE TABLE Courses(
+   cid number primary key,
+   cname varchar2(15) not null,
+   rid number, 
+   fid number,
+   foreign key(rid) references room(rid) on delete set null,
+   foreign key(fid) references faculty(fid) on delete set null);
+
+courses
+cid   cname   rid     fi
+--------------------
+121  DBDA   100    10
+131  DAC      101
+141  DTISS
+151  DIOT    105    12
+
+    INSERT into courses values(121,'DBDA',100, 10);
+    INSERT into courses (cid, cname, rid) values(131,'DAC',101);
+    INSERT into courses (cid, cname) values(141,'DTISS');
+    INSERT into courses values(151,'DIOT',105, 12);
+
+3. room(roomid,rname,rloc)
+
+   CREATE TABLE room(
+   rid number primary key,
+   rname varchar2(15) not null,
+   rloc varchar2(20));
+
+ Room
+roomid rname rloc
+100 jasmin 1st floor
+101 Rose 2nd floor
+105 Lotus 1st floor
+103 Mogra 1st floor
+
+
+INSERT room values(100,'Jasmin','1st floor');
+INSERT room values(101,'Rose','2nd floor');
+INSERT room values(105,'Lotus','1st floor');
+INSERT room values(103,'Mogra','1st floor');
+
+1. list all courses for which no room is assigned and all rooms which are available
+
+2. list all faculties who are not allocated to any course 
+
+3. list all rooms which are allocated  to any courses
+
+4. list all rooms which are not allocated to any courses
+ 
+5. display courses and faculty assigned to those courses whose special skill is database
+
+
+ 

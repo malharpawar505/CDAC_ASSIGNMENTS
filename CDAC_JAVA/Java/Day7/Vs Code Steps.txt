@@ -1,0 +1,11 @@
+https://code.visualstudio.com/docs/languages/java
+
+Download Install the Coding Pack for java
+
+Open Vs Code
+press Cnt+shift +P
+
+create Java Project
+select no build Tools
+Select Project location 
+Give name to Java Project

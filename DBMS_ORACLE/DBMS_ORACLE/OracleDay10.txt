@@ -1,0 +1,51 @@
+Transaction control statements(TCL/DCL)
+==================================
+1. Commit
+
+insert into emp(empno,ename)
+values(234,'Sameer');
+
+2. ROLLBACK
+
+3. SEVEPOINT   A
+    ROLLBACK to A
+    
+savepoint A;
+insert into dept
+values(11,'dfdff',1);
+insert into dept
+values(12,'dfdff',1);
+insert into dept
+values(13,'dfdff',1);
+create table tab3
+(col1 number,
+col2 number);
+
+savepoint B;
+insert into dept
+values(14,'dfdff',1);
+insert into dept
+values(15,'dfdff',1);
+
+DDL statements cannot be 
+
+ 
+
+
+select empno,ename, sum(sal) over()  as "Total"
+from emp;
+
+select empno,ename,deptno, sum(sal) over(partition by deptno)  as "Total"
+from emp;
+
+select empno,ename,deptno,job, sum(sal) over(partition by job)  as "Total"
+from emp;
+
+select empno,ename,deptno,job,sal, row_number() over(partition by deptno order by sal)  as "Total"
+from emp;
+
+select empno,ename,deptno,sal
+from (select empno,ename,deptno,sal,rank()  over(partition by deptno order by sal desc) as rnk
+from emp e) x
+where x.rnk <3;
+

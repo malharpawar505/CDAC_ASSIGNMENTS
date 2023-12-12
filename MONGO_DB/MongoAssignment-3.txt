@@ -1,0 +1,87 @@
+create a collection student
+save following documents in it
+
+1. name:Arti, dept:CS, marks array [67,90,78,93,47],fees 12000,course:'Enginnering',gender:f,scholership:8000
+Solution:
+	db.student.insert({name:'Arti',dept:'CS',marks:[67,90,78,93,47],fees:12000,course:'Enginnering',gender:'f',scholership:8000})
+2. name:Pooja, dept:IT, marks array [77,80,63,70,47],fees 7000, course:Bsc.,gender:f,scholership18000
+ Solutio:
+	db.student.insert({name:'Pooja',dept:'IT',marks:[77,80,63,70,47],fees:7000,course:'BSC',gender:'f',scholership:18000})
+
+3. name:Prasad, dept:electronics, marks array [66,54,92,41,89],fees 10000, course:BCom., scholership,20000
+Solution:
+
+db.student.insert({name:'Prasad',dept:'Electronics',marks:[66,54,92,41,89],fees:10000,course:'BCOM',gender:'M',scholership:20000})
+
+
+add 5 documents having dept as electronoics.
+db.student.insert({name:'Malhar',dept:'Electronics',marks:[69,55,82,21,99],fees:10000,course:'BCOM',gender:'M',scholership:80000})
+db.student.insert({name:'Amit',dept:'Electronics',marks:[26,84,72,45,87],fees:10000,course:'BCOM',gender:'M',scholership:70000})
+db.student.insert({name:'Shrinivas',dept:'Electronics',marks:[62,57,77,81,69],fees:10000,course:'BCOM',gender:'M',scholership:20000})
+db.student.insert({name:'Pankaj',dept:'Electronics',marks:[96,74,95,46,86],fees:10000,course:'BCOM',gender:'M',scholership:20000})
+db.student.insert({name:'Rajesh',dept:'Electronics',marks:[86,64,52,21,19],fees:10000,course:'BCOM',gender:'M',scholership:20000})
+
+
+
+1.Write a query to increace marks by 10 for all subjects for students studing in electronics dept..
+Solution:
+
+db.student.updateMany(
+...    { dept: 'Electronics' },
+...    { $inc: { 'marks.$[]': 10 } }
+... )
+
+===============================================================================================================================================
+
+2. Find total fees of electronics dept.
+Solution:
+	db.student.aggregate([
+  {
+    $match: {
+      dept: "Electronics"
+    }
+  },
+  {
+    $group: {
+      _id: null,
+      totalFees: { $sum: "$fees" }
+    }
+  }
+])
+
+============================================================================================================================================
+
+3. Find total female students.
+Solution:
+
+db.student.aggregate([
+  {
+    $match: {
+      gender: 'f'
+    }
+  },
+  {
+    $group: {
+      _id: null,
+      totalfemale: { $sum: 1 }
+    }
+  },
+  {
+    $project: {
+      _id: 0,
+      totalfemale: 1
+    }
+  }
+])
+
+=============================================================================================================================================================
+4. Sort data depending on fees
+Solution:
+
+
+ 
+5. find the student paying highest fees
+6. find top 3 students getting maximum scholership arrange them according to course.
+
+
+ 

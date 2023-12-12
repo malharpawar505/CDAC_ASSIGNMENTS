@@ -1,0 +1,66 @@
+1. Count number of clerks in dept 10 and 20.
+
+ans: select count(*) from emp1 where deptno in (10,20) group by job having job='CLERK';
+
+=======================================================================================================================================
+2. Display sum of salary according to job for all employees excluding dept 30. Display only if the sum salary is > 5000.
+
+ANS:  select job,sum(sal) from emp1 group by job having sum(sal)>5000 order by job;
+
+====================================================================================================================================================
+3. Display job wise max sal only for managers, clerks, salesman working in dept 10 and 20. Sort the data by des order of the max    salary.
+
+ANS: select job,max(sal) from emp1 where deptno=10 or deptno=20  group by job order by job DESC; 
+
+select * from emp1 where deptno=(select deptno from emp1 where ename='MANAGERS'    ) or hg
+========================================================================================================================================
+4. Display job wise number of employees in all the department with total salary > 3000
+
+ANS: select deptno,count(ename) from emp1 where sal>3000 group by deptno;
+
+====================================================================================================================================
+
+5. Display the department number having atleast 4 employees in it.
+
+ANS: select deptno from emp1 where empno<=4 group by deptno; 
+===============================================================================================
+
+6. Display the department having saleman in it.
+
+ANS: select deptno from emp1 where job='SALESMAN' group by deptno;
+
+======================================================================================================================================================
+
+7. Display all allocated jobs from emp table. 
+8. Display name starting with upper case letter and job starting with upper case letter for all employees.
+    e.g Smith Clerk
+
+ANS: 
+
+9. Display ename and it's length for all employees.
+    e.g SMITH 5
+
+ANS: select ename,length(ename) from emp1 where ename='SMITH';
+
+==================================================================================================================================================
+
+10.Display first 3 characters of ename in lower case and rest everything in upper case. 
+    e.g smiTH
+
+ANS: select concat(lower(substr(ename,1,3),ename) from emp1 ;
+
+=========================================================================================================================================================
+
+11.Display last 3 letters of name.
+
+ANS: select ename from emp1 where regexp_like(ename,'.3$');
+
+====================================================================================================================================
+12.Generate an email-id for all employees and display. Email id is generated as follows
+    first 3 letters of name in lower case + last 2 letters of job in lower case + @knowit.com
+    eg name=SMITH   job=CLERK  
+    email-id = smirk@knowit.com
+13. Increase the salary by 10% in the database for all employees having experience more than 40 years  
+14. Implement following using case statement. Use data from emp database.
+    If comm is null  need improvement  If <500  ok  If >=500 and < 1000  good'  Excellent'
+15. From the emp table, write a SQL query to find those employees whose salary is in the range of 1000, and 3000(Begin and end values included.). 

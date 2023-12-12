@@ -1,0 +1,371 @@
+Like operator
+------------
+% match set of characters
+_ single char
+
+select * 
+from emp
+where ename like 'A%';
+
+select * 
+from emp
+where ename like '%N';
+
+select * 
+from emp
+where ename like '%n';
+
+select all emp with second letter E
+select * 
+from emp
+where ename like '_D%';
+
+select * 
+from emp
+where ename like '__A%';
+
+select * 
+from emp
+where ename like '%M_';
+
+3rd letter M and ending with R
+select * 
+from emp
+where ename like '__L%R';
+
+ 
+select * 
+from emp
+where ename not like '__L%R';
+
+=================================
+
+Regular Expression
+
+REGEXP_LIKE
+
+^ starting letter. first pos
+$ end pos
+. any single char. same like _ 
+.* set of char 
+* set of char
+? 0 or 1 occurance of preceding char pattern
+[]
+
+
+
+
+all name starting with A
+
+select * 
+from emp
+where REGEXP_LIKE(ename,'^A');
+
+name ending with R
+
+select * 
+from emp
+where REGEXP_LIKE(ename,'R$');
+
+select * 
+from emp
+where REGEXP_LIKE(ename,'.*N.*');
+
+start with A or M
+select * 
+from emp
+where REGEXP_LIKE(ename,'^[AMJ]');
+
+select * 
+from emp
+where REGEXP_LIKE(ename,'^[AMJ]');
+
+starts with M, L at third pos,ends with R
+
+select * 
+from emp
+where REGEXP_LIKE(ename,'^M.L.*R$');
+
+starts with A ends with N or starts with M ends with R 
+or starts with S and ends with H
+
+select * 
+from emp
+where REGEXP_LIKE(ename,'^A.*N$|^M.*R$|^S.*H$');
+
+names not starting with A
+select * 
+from emp
+where REGEXP_LIKE(ename,'^[^A].*');
+
+===========================================
+
+|| concatnate operator
+
+select ename||job
+from emp;
+
+select ename||'::'||job
+from emp;
+
+select ename||' is a '||job
+from emp;
+
+select ename||' is a '||job || sal
+from emp;
+========================================
+
+DISTINCT Clause
+
+select distinct deptno from emp;
+
+=========================
+
+ORDER By sort the data
+ASC or DESC
+select
+from
+where
+group by
+having
+order by
+
+select ename,sal 
+from emp
+order by sal;
+ 
+
+select ename,sal 
+from emp
+order by sal DESC;
+ 
+select ename,sal,deptno
+from emp
+where deptno=20
+order by sal;
+
+select ename,job,sal 
+from emp
+order by job, sal;
+ 
+select ename,job,sal 
+from emp
+order by job, sal desc;
+
+select ename,job,sal,deptno 
+from emp
+order by job, sal desc,deptno;
+ 
+=================================
+single row functions
+
+1 round(1234.66,2)
+
+select round(12345.6678,2)
+from dual;
+
+2.trunc(1234.6572,2)
+
+select trunc(1234.6572,2)
+from dual;
+
+3.ceil
+select ceil(123.2222)
+from dual;
+
+4.floor
+select floor(123.99)
+from dual;
+
+5.sqrt
+select sqrt(4)
+from dual;
+
+6.abs
+select abs(-4)
+from dual;
+
+7.power
+select power(4,3)
+from dual;
+
+8. mod(10,2)
+select mod(10,3)
+from dual;
+
+========================
+
+string functions
+
+1 lower
+select lower(ename)
+from emp;
+
+2 upper
+select upper(ename) 
+from emp;
+
+3 initcap
+select initcap(ename) 
+from emp;
+
+4 concat(a,b)
+select concat(ename,job)
+from emp;
+
+select concat(concat(ename,job),hiredate)
+from emp;
+
+select concat(concat(initcap(ename),'::'),job)
+from emp;
+
+
+5 substr(str,pos,n)
+select substr(job,2,3)
+from emp;
+
+select concat(concat(lower(ename),upper(substr(job,1,2))),'@know-it.com')
+from emp;
+
+6 length(ename)
+select ename,length(ename)
+from emp;
+
+6 ltrim 
+remove spaces fro left side
+
+insert into student(roll,name)
+values(111,'   Amit');
+insert into student(roll,name)
+values(222,'  Ajit     ');
+
+select ltrim(name) from student;
+select ltrim(roll) from student;
+select length(name) from student;
+
+7 rtrim
+  removes spaces from rt side
+
+8 trim 
+  removes spaces from both sides.
+
+9 lpad(str,n,ch)
+
+select ename,lpad(ename,10,'*')
+from student;
+
+10 rpad
+select name,rpad(name,12,'#')
+from student;
+
+=====================================
+date functions
+
+select sysdate
+from dual
+
+1 add_months
+select add_months(sysdate,3)
+from dual;
+
+select add_months(sysdate,-3)
+from dual;
+
+select add_months(hiredate,3)
+from emp;
+
+select add_months('04-OCT-2023',3)
+from emp;
+
+2 months_between
+
+select months_between(sysdate,hiredate)
+from emp;
+
+3 next_day
+select next_day(sysdate,'Thursday')
+from dual;
+
+select next_day(sysdate,5)
+from dual;
+
+4 SQL> select current_timestamp
+  2  from dual;
+
+CURRENT_TIMESTAMP
+--------------------------------------
+05-OCT-23 11.11.39.968000 AM +05:30
+
+
+5 extract
+
+select extract(month from sysdate)
+from dual;
+ select ename,extract(month from hiredate)
+from emp;
+
+select ename,hiredate,extract(day from hiredate)
+from emp;
+ 
+ select ename,hiredate,extract(year from hiredate)
+from emp;
+
+select ename,hiredate 
+from emp
+where extract(year from hiredate)=1981;
+
+find employees who have completed 39 years of service
+
+select ename,hiredate, trunc(months_between(sysdate,hiredate)/12)
+from emp
+where  (months_between(sysdate,hiredate)/12)>41 ;
+
+==============================================
+
+Group functions(aggregate functions)
+
+count
+sum
+avg
+min
+max
+
+1 count()
+select count(comm)
+from emp;
+
+ 
+select count(*)
+from student;
+
+2 sum()
+select sum(sal)
+from emp
+where deptno=20;
+
+3 max()
+
+select max(sal)
+from emp;
+select max(sal)
+from emp
+where deptno=20;
+
+4 min()
+select min(sal)
+from emp;
+
+5 avg()
+select avg(sal)
+from emp;
+
+
+
+
+
+
+
+
+
+
+

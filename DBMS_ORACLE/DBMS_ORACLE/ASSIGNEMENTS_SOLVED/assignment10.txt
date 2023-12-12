@@ -1,0 +1,58 @@
+1. Display all employees who have joined after 9th june 81.
+
+ANS: select * from emp1 where hiredate>'09-june-81';
+  
+==============================================================================================================================
+2. Display empno,empname,sal, comm and total salary where total salary is       >1500.
+   Total Salary = comm + sal;
+
+ANS: select empno,ename,sal,comm,(sal+comm) from emp1 where (sal+comm)>1500;
+
+==================================================================================================================================
+   
+3. Find all employees whose sal is divisible by 3 
+
+ANS: select * from emp1 where mod(sal,3)=0;
+
+================================================================================================================================
+   
+4. Find number of analysts.
+
+5. Display departmentno, maximum salary department-wise.
+
+6. Write a query to display the number of people with the same job. (count jobwise)
+
+7.Create a report to display the manager number and the salary of the lowest-paid employee for  that manager. Exclude anyone whose manager is not known. Exclude any groups where the  minimum salary is $6,000 or less. Sort the output in descending order of salary.
+
+8. Create a query to display the total number of employees hired in 1995, 1996, 1997, and 1998. Create appropriate column headings.
+
+9.Create a report that displays the employee number, last name, and salary of all employees who  earn more than the average salary. Sort the results in order of ascending salary.
+
+10. list all employees who earn more than average sal of Allen's department
+
+
+11.list all employees who are earning more than average salary of their job
+
+
+12. Write a query to get the current date in Thursday September 2014 format.
+     Thursday September 2014
+
+13. Write a query to extract the year from the current date.
+
+14. Write a query to get the name and hire date from employees table 
+where hire date between '1987-06-01' and '1987-07-30
+
+15. Write a query to get the employees who joined in the month of June.
+
+16. Write a query to get the years in which more than 5 employees joined.
+
+17. Write a query to get employees whose experience is more than 5 years.
+
+18. Write a query to get employee ID, last name, and date of first salary of the 
+employees.
+
+19. Write a function to calculate nth power of m without using inbuilt function. Call this function in procedure calculate. 
+    Pass n and m as in parameter to procedure.
+
+
+ 

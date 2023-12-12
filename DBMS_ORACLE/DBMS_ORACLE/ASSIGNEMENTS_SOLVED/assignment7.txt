@@ -1,0 +1,119 @@
+1. Display all employees with sal more than his manager's sal.
+
+ANS: select e.ename,e.sal from emp1 e where sal>(select sal from emp1 d where e.mgr=d.empno); 
+
+===================================================================================================================================
+
+2.  Find employees who earn salary more than the avg sal of their dept.
+
+ANS: select e.ename,e.empno,e.mgr,e.deptno from emp1 e where sal>(select avg(sal) from emp1 d where e.deptno=d.deptno);
+
+====================================================================================================================================
+3. Write a query which will display dept no and dept names to which no employee is assigned.
+
+ANS: select d.deptno,d.dname from dept d where not exists (select deptno from emp1 e where e.deptno=d.deptno);
+
+=====================================================================================================================================
+
+create following tables and solve following questions
+1. faculty(fid(PK),fname,sp.skill1,sp.skill2)
+CREATE TABLE faculty(
+    fid number primary key,
+    fname varchar2(20) not null,
+    sp_skill1 varchar2(30),
+    sp_skill2 varchar2(30)
+ );
+
+faculty
+fid  fname  spskill1      spskill2
+------------------------------
+10  Amol   database    JAVA
+11  Asha    JAVA         MySQL
+12  Kiran   CPP            Database
+13  Seeta   MySQL     database
+   
+insert into faculty values(10,'amol','database','JAVA');
+insert into faculty values(11,'asha','JAVA','MYSQL');
+insert into faculty values(12,'kiran','CPP','Database');
+insert into faculty values(13,'seeta','MYSQL','database');
+
+2. courses(cid(PK),cname,rid,fid(FK))
+
+   CREATE TABLE Courses(
+   cid number primary key,
+   cname varchar2(15) not null,
+   rid number, 
+   fid number,
+   foreign key(rid) references room(rid) on delete set null,
+   foreign key(fid) references faculty(fid) on delete set null);
+
+courses
+cid   cname   rid     fi
+--------------------
+121  DBDA   100    10
+131  DAC      101
+141  DTISS
+151  DIOT    105    12
+
+    INSERT into courses values(121,'DBDA',100, 10);
+    INSERT into courses (cid, cname, rid) values(131,'DAC',101);
+    INSERT into courses (cid, cname) values(141,'DTISS');
+    INSERT into courses values(151,'DIOT',105, 12);
+
+3. room(roomid,rname,rloc)
+
+   CREATE TABLE room(
+   rid number primary key,
+   rname varchar2(15) not null,
+   rloc varchar2(20));
+
+ Room
+roomid rname rloc
+100 jasmin 1st floor
+101 Rose 2nd floor
+105 Lotus 1st floor
+103 Mogra 1st floor
+
+
+INSERT into room values(100,'Jasmin','1st floor');
+INSERT into room values(101,'Rose','2nd floor');
+INSERT into room values(105,'Lotus','1st floor');
+INSERT into room values(103,'Mogra','1st floor');
+
+1. list all courses for which no room is assigned and all rooms which are available
+
+ANS: select c.cname,r.rname from courses c full join room r on c.rid=r.rid where c.rid is null;
+
+CNAME           RNAME
+--------------- ---------------
+DTISS
+                Mogra
+
+============================================================================================================================================================================================
+
+2. list all faculties who are not allocated to any course 
+
+ANS: select f.fname from faculty f full join courses c on c.fid=f.fid where c.fid is null; 
+
+============================================================================================================================================================================================
+
+3. list all rooms which are allocated  to any courses
+
+ANS: select r.rname from room r inner join courses c on c.rid=r.rid;
+
+============================================================================================================================================================================================
+
+4. list all rooms which are not allocated to any courses
+
+ANS: select r.rname from room r full join courses c on c.rid=r.rid where c.rid is null;
+
+============================================================================================================================================================================================
+ 
+5. display courses and faculty assigned to those courses whose special skill is database
+
+ANS: select c.cname,f.fname from faculty f inner join courses c on c.fid=f.fid and (sp_skill1='database' or sp_skill2='database');            
+
+select c.cid,c.cname,c.fid,f.fname from course c,faculty f where c.fid in(select f.fid from faculty f where sp_skill1='database' or sp_skill2='database') and c.fid=f.fid;
+
+
+ 

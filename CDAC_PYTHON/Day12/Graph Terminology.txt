@@ -1,0 +1,42 @@
+Axis: The horizontal and vertical lines that form the basis of a graph.
+
+X-axis: The horizontal axis on a graph that represents the independent variable.
+
+Y-axis: The vertical axis on a graph that represents the dependent variable.
+
+Data points: The individual values that are plotted on a graph.
+
+Line graph: A graph that shows the relationship between two variables by connecting data points with lines.
+
+Bar graph: A graph that uses rectangular bars to represent the values of different categories or groups.
+
+Pie chart: A circular graph that represents the relative sizes of different categories or groups.
+
+Scatter plot: A graph that shows the relationship between two variables by plotting individual data points on a two-dimensional plane.
+
+Trend line: A line that shows the general direction or trend of the data points on a graph.
+
+Scale: The range of values represented on an axis of a graph.
+
+Legend: A key that explains the meaning of the different colors, symbols, or lines used on a graph.
+
+Gridlines: The horizontal and vertical lines that divide the graph into sections and make it easier to read.
+
+Data range: The minimum and maximum values of the data being plotted on the graph.
+
+Data series: A set of related data points that are plotted together on a graph.
+
+histogram:
+
+A histogram is a type of graph that displays the distribution of a dataset. It is a bar graph-like representation where the x-axis represents the range of values in the dataset divided into bins, and the y-axis represents the frequency or count of data points within each bin. The bars of the histogram are typically adjacent and of equal width, with the height of each bar indicating the number of data points falling within the corresponding bin.
+
+Histograms are commonly used in data analysis to visualize the distribution of continuous or discrete data. They can help to identify patterns, outliers, and other characteristics of a dataset, and can be useful for making decisions or drawing conclusions based on the data.
+
+hue:
+In data visualization, hue is commonly used to encode categorical or qualitative variables, such as different types of products or customer segments. By assigning different hues to different categories, it is possible to distinguish between them visually and make it easier for viewers to understand the data.
+
+When using hue in data visualization, it is important to choose colors that are easily distinguishable from one another, especially for viewers who may have color vision deficiencies. The use of a color palette with evenly spaced hues can help to ensure that each category is easily distinguishable and that the colors used do not introduce unnecessary bias or confusion into the data.
+
+
+
+

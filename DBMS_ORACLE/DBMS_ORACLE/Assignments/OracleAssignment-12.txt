@@ -1,0 +1,4 @@
+1. Write a pl/sql block to accept a number and find th factorial of a number.
+2. Write a pl/sql block to accept name and display  'hello name'.
+3. Write a PL/SQL block to accept a number and check if it is prime. Throw an exception if number is 0.
+  

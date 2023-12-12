@@ -1,0 +1,108 @@
+1.display all movies with rating=4
+db.movie.find({rating:4})
+
+2.display all movies with rating=3 and price=200
+db.movie.find({rating:{$eq:3},price:{$eq:200}});
+
+3.display all movies with rating>3 and price=540........
+db.movie.find({rating:{$gt:3},price:{$eq:540}});
+
+4.display all movies with rating>3 and price>300
+db.movie.find({rating:{$gt:3},price:{$gt:300}}).pretty();
+
+5.display all movies with price > 200 and < 400
+db.movie.find({price:{$gt:200},price:{$lt:400}}).pretty();
+
+6.display all movies with price = 200 or 540 400
+db.movie.find({price:{$in:[200,540,400]}}).pretty();
+
+7.display all movies with price not = 200 nor 540  nor 400
+db.movie.find({price:{$not:{$eq:200,$eq:540,$eq:400}}}).pretty();
+
+8.display count of  movies with price not = 200 nor 540  nor 400
+db.movie.find({price:{$nin:[200,540,400]}}).count()
+
+9.display all movies with rating=4 or price>300
+db.movie.find({$or:[{rating:4},{price:{$gt:300}}]}).pretty();
+
+10.display all movies with price not > 200 and < 400
+db.movie.find({price:{$not:{$lte:200,$gte:400}}}).pretty();
+
+11.display all movies with rating is odd
+db.movie.find({rating:{$mod:[2,1]}}).pretty()
+
+12.display all movies in which amitabh has acted
+db.movie.find({actor:'amitabh'}).pretty()
+
+13.display all movies in which amitabh has acted display in ascending order of price
+db.movie.find({actor:'amitabh'}).sort({price:1}).pretty()
+
+14.display all movies in which amitabh has acted display in descending order of price
+db.movie.find({actor:'amitabh'}).sort({price:-1}).pretty()
+
+15.display all movies in which amitabh has acted display only 1st document
+db.movie.find({actor:'amitabh'}).limit(1).pretty()
+
+16display all movies in which amitabh has acted display only 1st  5 document
+db.movie.find({actor:'amitabh'}).limit(5).pretty()
+
+17.display all movies in which amitabh has acted display only 5 6th and 7 th
+db.movie.find({actor:'amitabh'}).limit(3).skip(4).pretty()
+
+18.to display all movies with number of actors=3
+
+db.movie.find({actor:{$size:3}}).pretty()
+
+19. Create a capped collection of size 5 by name 
+       dept. Store dno,dname,location
+      Test this capped collection by adding new documents.
+
+db.createCollection("dept", {capped:true, max:5, size:5000000, autoIndexId:true})
+
+db.dept.insertMany([{dno:1, dname:'HR', location:'Pune'}, {dno:2, dname:'Accounts', location:'Mumbai'}])
+
+db.dept.insertMany([{dno:3, dname:'Marketing', location:'Pune'}, {dno:4, dname:'Finance', location:'Mumbai'}, {dno:5, dname:'Customer Support', location:'Mumbai'}])
+
+db.dept.insert({dno:6, dname:'Sales', location:'Delhi'})
+
+20.Display top 5 highest rating movies.
+21. Display  lowest 3 rating movies.
+22. For movie Kahani change rating to 5.
+23. Change price =400 and increase rating by 2 for all movies with name Kahani in it.
+24. Decrease price of all movies by Rs. 40.
+25. Increase the price by 10% of price
+ 
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+------to display all movies with amitabh acted in it and is at 1 st index position in array
+db.movie.find({'actor':/^[Aa]mitabh'}).skip(4).limit(3)
+
+
+----- to find all movies starts with diigt
+db.movie.find({name:/^[0-9]/})
+
+------to find all movies with name start with digit and ends with s
+ db.movie.find({name:/^\d.*s$/})
+------to find all movies with name start with alphabate 
+ db.movie.find({name:/^[^0-9].*s$/})
+ db.movie.find({name:/^[a-zA-Z].*s$/})
+
+
+------to match entire element in a array
+ db.restuarant.find({grades:{$elemMatch:{"date" : ISODate("2014-05-20T00:00:00Z"),
+...                         "grade" : "A",
+...                         "score" : 12}}})
+
+
+
+
+
+

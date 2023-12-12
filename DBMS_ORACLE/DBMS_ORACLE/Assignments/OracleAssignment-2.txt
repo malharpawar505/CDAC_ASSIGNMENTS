@@ -1,0 +1,41 @@
+
+Note : Use Emp, dept   table
+
+1. To list all records with sal > 2000 and comm>200
+2. To list all record with job=’Clerk’ or sal>2000
+3. To list all the record with sal=1250 or 1100 
+4. To list all employees with sal>1250 and <2850
+5. Retrieve the details (Name, Salary and dept no) of the emp who are working in department code 20
+ 
+6. Display all employees who have joined after 9th june 81.
+7. Display empno,empname,sal, comm and total salary.
+   Total Salary = comm + sal;
+8. Display empname,deptno,dname for all employees.
+9. Display empname,deptno,dname for Smith.
+10.Display all employees with sal >2000 or job is either clerk or Salesman
+11.Select all employee with job is either CLERK or SALESMAN and sal >2000
+12.Display all employees who works in either dept 10 or 30 or joined in year 1982
+13.There is a salary hike by 20% . Display the information from emp table as empno,ename,sal and    new sal
+14.Create new table emp10 same as emp without any data.
+   check it's structure.
+15.Create new table dept100 having same structure and data as that of dept table.
+   Add primary key constraint on dno. check it's structure.
+16.Create new table emp110 same as emp and store all employees working in dept 10.
+   Add primary key constraint on this table for eno. Add foreign key constraint on dno.
+   check it's structure.
+17. insert new row in emp where manager is null.
+18. Display the emp details who do not have manager. 
+19. Create following tables for given schema.
+   trainer(tid PK, tname, cid fk)
+   course(cid pk, cname)
+   1. insert 5 meaningful records in both the tables.
+   2. One subject can be handled by multiple trainers. (cid in trainer table may repeat)
+   3. Try on delete set null on trainer table.
+20. In the above course table , add new column fees.
+21. From tables emp100 and dept100 display the following data.
+    eno,ename,sal,dno and dept name.
+22. Use emp100 table to perform following query
+    Update employee salary . Increase sal of each employee by 15% of sal+comm, change the job     manager mgr to 777 for all employees in dept 10.
+    
+    
+ 

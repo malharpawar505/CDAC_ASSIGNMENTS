@@ -1,0 +1,193 @@
+
+create table cat_details
+(
+  cat_id number,
+  details varchar2(30),
+  constraint pk_id2 primary key(cat_id)
+);
+insert into cat_details
+values(10,'aaaaaaaaa');
+insert into cat_details
+values(20,'bbbbbbbbb');
+insert into cat_details
+values(30,'ccccccc');
+insert into cat_details
+values(40,'dddddd');
+
+
+create table cat
+(
+  id number,
+  cid number,
+  cname varchar2(20),
+  constraint pk_id1 primary key(id),
+  constraint  fk_id1 foreign key(cid) references cat_details(cat_id)
+)
+
+insert into cat 
+values(1111,10,'Essentials');
+insert into cat 
+values(2222,20,'Food');
+insert into cat 
+values(3333,30,'Medicine');
+insert into cat 
+values(4444,40,'Electronics');
+
+create table product
+(
+ pid number,
+pname varchar2(20),
+cid number,
+constraint pk_id3 primary key(pid),
+constraint  fk_id3 foreign key(cid) references cat(id)
+);
+insert into product
+values(1,'Soap',1111);
+insert into product
+values(2,'Sugar',2222 );
+insert into product
+values(3,'Savlon',3333);
+insert into product
+values(4,'Mobile',4444);
+
+1. Write a query to display pid,pname,cid, cname,details
+
+ANS:select p.pid,p.pname,p.cid,c.cname,cd.details from product p inner join cat c on c.id=p.cid inner join cat_details cd on cd.cat_id=c.cid;
+
+=========================================================================================================================================================
+
+2. Try following functions on emp table
+
+nvl
+nvl2
+nullif
+coalesce
+decode
+
+ANS: 1) nvl(arg1,arg2)
+		 select ename,comm,nvl(comm,100) from emp1;
+--------------------------------------------------------------------------
+     2) nvl2(arg1,arg2,arg3)
+			select ename,comm,nvl2(comm,200,100) from emp1;
+------------------------------------------------------------------------------------
+     3) nullif
+			select ename,deptno,nullif(deptno,20) from emp1;
+
+     4) coalesce
+
+			select 
+
+======================================================================================================================================================================
+
+
+3. create a sequence on product table and cat table.
+    Add few row and check the result.
+
+ANS: create sequence product_seq 
+      start with 5
+      increment by 1
+      maxvalue 30
+      nocache
+      nocycle;
+
+insert into cat_details
+values(product_seq.nextval,'pppppp');
+insert into cat values(product_seq.nextval,10,'veg');
+insert into product values(product_seq.nextval,'tab',1111);
+
+=========================================================================================================================================================
+
+4. create table office
+(eno number,
+  ename varchar2(12),
+ deptno number,
+ sal number,
+comm number,
+job varchar2(12)
+);
+insert into office
+values(1 ,'Harry',10,20000,1500,'Manager');
+insert into office
+values(2 ,'Ron',20,30000,null,'Professor');
+ insert into office
+values(3 ,'Draco',30,25000,1300,'Programmer');
+ insert into office
+values(4 ,'Hermione',30,40000,1000,'Analyst');
+ insert into office
+values(5 ,'Snape',30,32000,null,'Manager');
+ insert into office
+values(6 ,'Hagrid',null,22000,null,'Salesman');
+insert into office
+values(7 ,'Neville',null,22000,null,'null');
+
+create table office_dept
+(
+   deptno number,
+   dname varchar2(12),
+   loc_id number
+);
+
+insert into office_dept
+values(10,'Training',7777);
+insert into office_dept
+values(20,'Admin',8888);
+insert into office_dept
+values(30,'MKT',9999);
+insert into office_dept
+values(40,'Sales',6666);
+
+create table loc1
+(
+  lid number,
+  deptno number,
+  city varchar2(15)
+);
+
+insert into loc1
+values (80,10,'Chennai');
+insert into loc1
+values (81,20,'Delhi');
+insert into loc1
+values (82,30,'Hydrabad');
+
+Write a query to 
+1. display empno,ename,deptno,dname and loc .
+
+ANS:select o.eno,o.ename,o.deptno,od.dname,l.loc1 from office o inner join office_dept d on d.deptno=o.deptno inner join loc1 l on l.deptno=d.deptno;
+
+=================================================================================================================================================================
+
+2  display all employees to whom department is not assined
+
+ANS:  select o.eno,o.ename from office o full join office_dept d on d.deptno=o.deptno where o.deptno is null; 
+
+=================================================================================================================================================
+3. display all departments in which no employee is working.
+
+ANS: select d.deptno from office_dept d where not exists (select ename from office o where o.deptno=d.deptno);  
+
+============================================================================================================================================
+
+4. display total sal for all employees.
+     total sal = sal +comm
+
+ANS: select eno,ename,sal,comm,sal+nvl(comm,0) "total salary" from office;
+
+============================================================================================================================================================================================
+
+5. Find all employes not getting comm.
+
+ANS: select * from office where comm is null;
+
+============================================================================================================================================================================================
+6. display avg salary of all departments.
+
+ANS:select avg(sal) from office;
+
+===========================================================================================================================================================================================
+7. dispaly all employees who earn sal less than avg sal of the dept they work in.
+
+
+
+ 
+ 

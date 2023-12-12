@@ -1,0 +1,4 @@
+File Menu -> Project Structure ->
+Modeules -> Select Dependancy Tab ->Click on '+' icon ->Select Jars and Directories ->Selct ojdbc.14.jar file-> ok->Select File-> Click on Apply and OK
+
+Confirm in External Library for newly added jar File.
